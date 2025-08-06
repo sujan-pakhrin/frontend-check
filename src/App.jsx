@@ -1,23 +1,54 @@
 
-import { BrowserRouter, Routes ,Route} from 'react-router-dom'
+import { Outlet, Route, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
 import ContactUs from './pages/ContactUs'
 import Register from './compoents/form/Register'
 import Login from './compoents/form/Login'
+import Navbar from './compoents/global/Navbar'
 function App() {
+  // <Route path="/" element={<Home/>}/>
+  const Layout = () => {
+    return (
+      <>
+        <Navbar />
+        <Outlet />
+      </>
+    )
+  }
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <Home />
+        },
+        {
+          path: "/about",
+          element: <About />
+        },
+        {
+          path: "/contact-us",
+          element: <ContactUs />
+        },
+      ]
+    },
+    {
+      path: "/login",
+      element: <Login />
+    },
+    {
+      path: "/register",
+      element: <Register />
+    }
+
+  ])
 
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/about' element={<About/>}/>
-          <Route path='/contact-us' element={<ContactUs/>}/>
-           <Route path='/login' element={<Login/>}/>
-            <Route path='/register' element={<Register/>}/>
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </>
   )
 }

@@ -1,10 +1,8 @@
 import React from 'react'
-import Navbar from '../compoents/global/Navbar'
 
 const ContactUs = () => {
   return (
     <>
-        <Navbar/>
      <section className="relative z-10 overflow-hidden bg-white py-20 dark:bg-dark lg:py-[120px] ">
         <div className="container">
           <div className="-mx-4 flex flex-wrap lg:justify-between">
