@@ -23,7 +23,7 @@ const Register = () => {
     }).then((res) => {
       // console.log(res.data)
       toast.success(res.data.message)
-      navigate('/login')
+      navigate('/verify-otp',{state:{email:formData.email}})
     }).catch((err) => {
       console.log(err)
     })

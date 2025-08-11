@@ -6,6 +6,7 @@ import ContactUs from './pages/ContactUs'
 import Register from './compoents/form/Register'
 import Login from './compoents/form/Login'
 import Navbar from './compoents/global/Navbar'
+import VerifyOTP from './compoents/form/VerifyOTP'
 function App() {
   // <Route path="/" element={<Home/>}/>
   const Layout = () => {
@@ -42,6 +43,10 @@ function App() {
     {
       path: "/register",
       element: <Register />
+    },
+    {
+      path:"/verify-otp",
+      element:<VerifyOTP/>
     }
 
   ])

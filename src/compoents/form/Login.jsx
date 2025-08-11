@@ -1,33 +1,30 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {toast} from 'react-toastify'
 
 const Login = () => {
     const navigate=useNavigate();
-    const data = {
-        email: "ram@gmail.com",
-        password: "232323"
-    }
+    
     const [formData, setFormData] = useState({
         email: "",
         password: ""
     })
     console.log(formData)
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        console.log("Hello")
-        if(formData.email===""||formData.password===''){
-            return toast.error("Please fill all the forms")
-        }
-        if(formData.email!==data.email){
-             return toast.error("Your Email is incorrect")
-        }
-        if(formData.password!==data.password){
-             return toast.error("Your Password is incorrect")
-        }
-        toast.success("Login successfully!!")
-        //redirect to home
-        navigate('/')
+        await axios.post('http://localhost:8000/api/login',formData,{
+            headers: {
+                    "Content-Type": "application/json"
+                }
+        }).then((res)=>{
+            console.log(res)
+            toast.success(res.data.message)
+            navigate('/')
+        }).catch((err)=>{
+            console.log(err)
+        })
+        
     }
     const handleChange = (e) => {
         const { id, value } = e.target;
