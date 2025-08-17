@@ -13,7 +13,7 @@ const Login = () => {
     console.log(formData)
     const handleSubmit = async(e) => {
         e.preventDefault();
-        await axios.post('http://localhost:8000/api/login',formData,{
+        await axios.post('/api/login',formData,{
             headers: {
                     "Content-Type": "application/json"
                 }

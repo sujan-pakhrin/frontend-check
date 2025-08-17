@@ -48,6 +48,8 @@ function App() {
       path:"/verify-otp",
       element:<VerifyOTP/>
     }
+    ,
+  
 
   ])
 

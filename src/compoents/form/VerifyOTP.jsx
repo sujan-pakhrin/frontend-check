@@ -17,7 +17,7 @@ const VerifyOTP = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:8000/api/verify-otp', formData,
+        await axios.post('/api/verify-otp', formData,
             {
                 headers: {
                     "Content-Type": "application/json"

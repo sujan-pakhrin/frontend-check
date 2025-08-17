@@ -16,7 +16,7 @@ const Register = () => {
   console.log(formData)
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:8000/api/register', formData, {
+    await axios.post('/api/register', formData, {
       headers: {
         "Content-Type": "multipart/form-data"
       }
